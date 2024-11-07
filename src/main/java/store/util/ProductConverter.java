@@ -25,7 +25,6 @@ public class ProductConverter implements Converter<Product> {
         String price = data[PRICE_INDEX];
         String quantity = data[QUANTITY_INDEX];
         String category = data[PROMOTION_INDEX];
-        System.out.println(price);
         return new Product(name, Integer.parseInt(price), Integer.parseInt(quantity), category);
     }
 
