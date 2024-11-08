@@ -21,11 +21,12 @@ public class ProductConverter implements Converter<Product> {
     @Override
     public Product convertToObject(String line) {
         String[] data = line.split(DELIMITER);
-        String name = data[NAME_INDEX];
-        String price = data[PRICE_INDEX];
-        String quantity = data[QUANTITY_INDEX];
-        String category = data[PROMOTION_INDEX];
-        return new Product(name, Integer.parseInt(price), Integer.parseInt(quantity), category);
+        return new Product.Builder()
+                .name(data[NAME_INDEX])
+                .price(Integer.parseInt(data[PRICE_INDEX]))
+                .quantity(Integer.parseInt(data[QUANTITY_INDEX]))
+                .promotion(data[PROMOTION_INDEX])
+                .build();
     }
 
 }

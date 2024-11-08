@@ -20,7 +20,12 @@ class ProductConverterTest {
     @Test
     void convertToString() {
         ProductConverter productConverter = new ProductConverter();
-        Product product = new Product("오렌지 에이드",1500,9,null);
+        Product product = new Product.Builder()
+                .name("오렌지 에이드")
+                .price(1500)
+                .quantity(9)
+                .promotion(null)
+                .build();
         String line = productConverter.convertToString(product);
         assertThat(line).isEqualTo("오렌지 에이드,1500,9,null");
     }

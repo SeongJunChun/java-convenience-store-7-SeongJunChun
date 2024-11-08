@@ -27,7 +27,12 @@ class FileHandlerTest {
     void saveToFile() throws IOException {
         FileHandler<Product> fileHandler = new FileHandler<>(new ProductConverter());
         File file = new File(WRITE_FILE_PATH);
-        Product product = new Product("오렌지 에이드",1500,9,null);
+        Product product = new Product.Builder()
+                .name("오렌지 에이드")
+                .price(1500)
+                .quantity(9)
+                .promotion(null)
+                .build();
         fileHandler.saveToFile(WRITE_FILE_PATH,List.of(product));
         assertThat(file.exists()).isTrue();
         if(file.exists()) {
