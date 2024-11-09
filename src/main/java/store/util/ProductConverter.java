@@ -1,6 +1,8 @@
 package store.util;
 
 import store.domain.Product;
+import store.domain.Promotion;
+import store.domain.Promotions;
 
 public class ProductConverter implements Converter<Product> {
 
@@ -9,13 +11,19 @@ public class ProductConverter implements Converter<Product> {
     private static final int QUANTITY_INDEX = 2;
     private static final int PROMOTION_INDEX = 3;
 
+    private final Promotions promotions;
+
+    public ProductConverter(Promotions promotions){
+        this.promotions = promotions;
+    }
+
     @Override
     public String convertToString(Product product) {
         return String.join(DELIMITER,
                 product.getName(),
                 String.valueOf(product.getPrice()),
                 String.valueOf(product.getQuantity()),
-                product.getPromotion());
+                getPromotionName(product.getPromotion()));
     }
 
     @Override
@@ -25,8 +33,15 @@ public class ProductConverter implements Converter<Product> {
                 .name(data[NAME_INDEX])
                 .price(Integer.parseInt(data[PRICE_INDEX]))
                 .quantity(Integer.parseInt(data[QUANTITY_INDEX]))
-                .promotion(data[PROMOTION_INDEX])
+                .promotion(promotions.findPromotionByName(data[PROMOTION_INDEX]))
                 .build();
+    }
+
+    private String getPromotionName(Promotion promotion) {
+        if(promotion == null){
+            return null;
+        }
+        return promotion.getName();
     }
 
 }

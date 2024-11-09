@@ -8,7 +8,7 @@ public class Product {
     private final String name;
     private final int price;
     private final int quantity;
-    private final String promotion;
+    private final Promotion promotion;
 
     public String getName() {
         return name;
@@ -22,7 +22,7 @@ public class Product {
         return quantity;
     }
 
-    public String getPromotion() {
+    public Promotion getPromotion() {
         return promotion;
     }
 
@@ -30,7 +30,7 @@ public class Product {
         private String name;
         private int price;
         private int quantity;
-        private String promotion;
+        private Promotion promotion;
 
         public Builder name(String name) {
             this.name = name;
@@ -47,7 +47,7 @@ public class Product {
             return this;
         }
 
-        public Builder promotion(String promotion) {
+        public Builder promotion(Promotion promotion) {
             this.promotion = promotion;
             return this;
         }
