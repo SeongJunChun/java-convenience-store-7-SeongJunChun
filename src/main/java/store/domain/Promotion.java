@@ -4,60 +4,60 @@ import java.time.LocalDate;
 
 public class Promotion {
     private final String name;
-    private final int purchaseCount;
-    private final int bonusItemCount;
-    private final LocalDate startDay;
-    private final LocalDate endDay;
+    private final int buy;
+    private final int get;
+    private final LocalDate startDate;
+    private final LocalDate endDate;
 
     public String getName() {
         return name;
     }
 
-    public int getPurchaseCount() {
-        return purchaseCount;
+    public int getBuy() {
+        return buy;
     }
 
-    public int getBonusItemCount() {
-        return bonusItemCount;
+    public int getGet() {
+        return get;
     }
 
-    public LocalDate getStartDay() {
-        return startDay;
+    public LocalDate getstartDate() {
+        return startDate;
     }
 
-    public LocalDate getEndDay() {
-        return endDay;
+    public LocalDate getendDate() {
+        return endDate;
     }
 
     public static class Builder {
         private String name;
-        private int purchaseCount;
-        private int bonusItemCount;
-        private LocalDate startDay;
-        private LocalDate endDay;
+        private int buy;
+        private int get;
+        private LocalDate startDate;
+        private LocalDate endDate;
 
         public Builder name(String name) {
             this.name = name;
             return this;
         }
 
-        public Builder purchaseCount(int purchaseCount) {
-            this.purchaseCount = purchaseCount;
+        public Builder buy(int buy) {
+            this.buy = buy;
             return this;
         }
 
-        public Builder bonusItemCount(int bonusItemCount) {
-            this.bonusItemCount = bonusItemCount;
+        public Builder get(int get) {
+            this.get = get;
             return this;
         }
 
-        public Builder startDay(LocalDate startDay) {
-            this.startDay = startDay;
+        public Builder startDate(LocalDate startDate) {
+            this.startDate = startDate;
             return this;
         }
 
-        public Builder endDay(LocalDate endDay) {
-            this.endDay = endDay;
+        public Builder endDate(LocalDate endDate) {
+            this.endDate = endDate;
             return this;
         }
 
@@ -68,10 +68,10 @@ public class Promotion {
 
     private Promotion(Builder builder) {
         this.name = builder.name;
-        this.purchaseCount = builder.purchaseCount;
-        this.bonusItemCount = builder.bonusItemCount;
-        this.startDay = builder.startDay;
-        this.endDay = builder.endDay;
+        this.buy = builder.buy;
+        this.get = builder.get;
+        this.startDate = builder.startDate;
+        this.endDate = builder.endDate;
     }
 
 }
