@@ -1,12 +1,10 @@
 package store.util;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.domain.Product;
 import store.domain.Promotion;
 
 class PromotionConverterTest {
@@ -24,10 +22,10 @@ class PromotionConverterTest {
         PromotionConverter promotionConverter = new PromotionConverter();
         Promotion promotion = new Promotion.Builder()
                 .name("MD추천상품")
-                .purchaseCount(1)
-                .bonusItemCount(1)
-                .startDay(LocalDate.of(2024,1,1))
-                .endDay(LocalDate.of(2024,12,31))
+                .buy(1)
+                .get(1)
+                .startDate(LocalDate.of(2024,1,1))
+                .endDate(LocalDate.of(2024,12,31))
                 .build();
         String line = promotionConverter.convertToString(promotion);
         assertThat(line).isEqualTo("MD추천상품,1,1,2024-01-01,2024-12-31");
