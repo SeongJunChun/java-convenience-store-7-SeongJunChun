@@ -1,6 +1,7 @@
 package store.domain;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 public class Promotion {
     private final String name;
@@ -8,6 +9,12 @@ public class Promotion {
     private final int get;
     private final LocalDate startDate;
     private final LocalDate endDate;
+
+    public boolean isOngoingPromotion(LocalDateTime date) {
+        LocalDate localDate = date.toLocalDate();
+        return (localDate.isEqual(startDate) || localDate.isAfter(startDate)) &&
+                (localDate.isEqual(endDate) || localDate.isBefore(endDate));
+    }
 
     public String getName() {
         return name;
