@@ -1,7 +1,7 @@
 package store.util;
 
 import java.time.LocalDate;
-import store.domain.Promotion;
+import store.domain.promotion.Promotion;
 
 public class PromotionConverter implements Converter<Promotion> {
 
@@ -17,8 +17,8 @@ public class PromotionConverter implements Converter<Promotion> {
                 promotion.getName(),
                 String.valueOf(promotion.getBuy()),
                 String.valueOf(promotion.getGet()),
-                String.valueOf(promotion.getstartDate()),
-                String.valueOf(promotion.getendDate()));
+                String.valueOf(promotion.getStartDate()),
+                String.valueOf(promotion.getEndDate()));
     }
 
     @Override

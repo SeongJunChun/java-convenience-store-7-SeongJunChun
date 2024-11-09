@@ -5,7 +5,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 import java.time.LocalDate;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.domain.Promotion;
+import store.domain.promotion.Promotion;
 
 class PromotionConverterTest {
     @DisplayName("문자열을 Promotion 객체로 변환한다")

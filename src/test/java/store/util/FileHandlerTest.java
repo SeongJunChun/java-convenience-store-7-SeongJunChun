@@ -8,7 +8,7 @@ import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.domain.Promotion;
+import store.domain.promotion.Promotion;
 
 class FileHandlerTest {
 

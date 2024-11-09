@@ -1,8 +1,8 @@
 package store.util;
 
-import store.domain.Product;
-import store.domain.Promotion;
-import store.domain.Promotions;
+import store.domain.product.Product;
+import store.domain.promotion.Promotion;
+import store.domain.promotion.Promotions;
 
 public class ProductConverter implements Converter<Product> {
 

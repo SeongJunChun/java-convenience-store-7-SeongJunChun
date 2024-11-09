@@ -1,4 +1,4 @@
-package store.domain;
+package store.domain.promotion;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -12,7 +12,7 @@ public class Promotions {
     private final List<Promotion> promotions;
 
     public Promotions(List<Promotion> promotions) {
-        this.promotions = Collections.unmodifiableList(new ArrayList<>(promotions));
+        this.promotions = List.copyOf(promotions);
     }
 
     public Set<Promotion> findAllPromotionsByDate(LocalDateTime date) {

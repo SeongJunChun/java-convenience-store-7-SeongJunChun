@@ -7,9 +7,9 @@ import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.domain.Product;
-import store.domain.Promotion;
-import store.domain.Promotions;
+import store.domain.product.Product;
+import store.domain.promotion.Promotion;
+import store.domain.promotion.Promotions;
 
 class ProductConverterTest {
 

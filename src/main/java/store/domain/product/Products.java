@@ -1,9 +1,10 @@
-package store.domain;
+package store.domain.product;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 import java.util.stream.Collectors;
+import store.domain.promotion.Promotion;
 
 public class Products {
 

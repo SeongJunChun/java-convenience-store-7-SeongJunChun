@@ -1,4 +1,4 @@
-package store.domain;
+package store.domain.promotion;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -28,11 +28,11 @@ public class Promotion {
         return get;
     }
 
-    public LocalDate getstartDate() {
+    public LocalDate getStartDate() {
         return startDate;
     }
 
-    public LocalDate getendDate() {
+    public LocalDate getEndDate() {
         return endDate;
     }
 

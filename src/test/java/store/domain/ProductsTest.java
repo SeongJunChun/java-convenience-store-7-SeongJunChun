@@ -9,6 +9,9 @@ import java.util.Set;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import store.domain.product.Product;
+import store.domain.product.Products;
+import store.domain.promotion.Promotion;
 
 class ProductsTest extends PromotionTestBase {
 
