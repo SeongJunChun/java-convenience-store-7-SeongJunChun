@@ -19,6 +19,10 @@ public class OrderResult {
         promotionalProducts = new ArrayList<Product>();
     }
 
+    public boolean hasNoPurchases(){
+        return nonPromotionalProducts.isEmpty()&&promotionalProducts.isEmpty();
+    }
+
     public OrderResultDto calculateTotalPriceAndQuantity() {
         int totalQuantity = Stream.concat(nonPromotionalProducts.stream(), promotionalProducts.stream())
                 .mapToInt(Product::getQuantity)
