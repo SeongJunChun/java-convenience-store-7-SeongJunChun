@@ -29,10 +29,25 @@ public class Products {
         return instance;
     }
 
+    public static void resetInstance() {
+        instance = null;
+    }
+
     public List<Product> findAllProductsByPromotion(Set<Promotion> promotions) {
         return products.stream()
                 .filter(product -> promotions.contains(product.getPromotion()) || product.getPromotion() == null)
                 .toList();
+    }
+
+    public void updateProduct(Product purchasedProduct) {
+        Product existingProduct = products.stream()
+                .filter(product -> product.getName().equals(purchasedProduct.getName()) && product.getPromotion() == purchasedProduct.getPromotion())
+                .findFirst()
+                .orElse(null);
+        if (existingProduct == null) {
+            throw new IllegalStateException();
+        }
+        existingProduct.reduceQuantity(purchasedProduct.getQuantity());
     }
 
     private List<Product> getAllProducts(List<Product> products) {

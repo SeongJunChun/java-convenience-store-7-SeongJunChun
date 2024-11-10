@@ -17,18 +17,18 @@ public class AvailableProducts {
     }
 
     public boolean isExist(String name) {
-        Product nonPromotionProduct = findByName(name, nonPromotionProducts);
+        Product nonPromotionProduct = findNonPromotionProduct(name);
         return nonPromotionProduct != null;
     }
 
     public boolean isExistPromotionProduct(String name) {
-        Product promotionProduct = findByName(name, promotionProducts);
+        Product promotionProduct = findPromotionProduct(name);
         return promotionProduct != null;
     }
 
     public int getTotalQuantity(String name) {
-        Product promotionProduct = findByName(name, promotionProducts);
-        Product nonPromotionProduct = findByName(name, nonPromotionProducts);
+        Product promotionProduct = findPromotionProduct(name);
+        Product nonPromotionProduct = findNonPromotionProduct(name);
         if (promotionProduct != null) {
             return nonPromotionProduct.getQuantity() + promotionProduct.getQuantity();
         }
@@ -36,12 +36,19 @@ public class AvailableProducts {
     }
 
     public int getPromotionQuantity(String name) {
-        Product promotionProduct = findByName(name, promotionProducts);
+        Product promotionProduct = findPromotionProduct(name);
         return promotionProduct.getQuantity();
     }
 
-    private Product findByName(String name, List<Product> products) {
-        return products.stream()
+    public Product findPromotionProduct(String name) {
+        return promotionProducts.stream()
+                .filter(product -> product.getName().equals(name))
+                .findFirst()
+                .orElse(null);
+    }
+
+    public Product findNonPromotionProduct(String name) {
+        return nonPromotionProducts.stream()
                 .filter(product -> product.getName().equals(name))
                 .findFirst()
                 .orElse(null);
