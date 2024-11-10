@@ -62,7 +62,7 @@ public enum Receipt {
                 FINAL_AMOUNT.format(formatPrice(receiptDto.getTotalPayment()));
     }
 
-    private static String formatPrice(int price) {
+    public static String formatPrice(int price) {
         return PRICE_FORMAT.format(price);
     }
 
