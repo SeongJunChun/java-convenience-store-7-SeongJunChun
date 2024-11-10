@@ -46,6 +46,7 @@ public class StoreController {
             order.getOrders().forEach((product, quantity) ->
                     purchaseController.purchaseProduct(product, quantity, availableProducts)
             );
+            if(orderService.getOrderResult().hasNoPurchases()) continue;
             Membership membership = new Membership(inputController.getMembershipDiscount());
             ReceiptDto receiptDto = new ReceiptDto(orderService.getOrderResult(),membership);
             outputView.printReceipt(receiptDto);
