@@ -17,29 +17,30 @@ public class OrderService {
     }
 
     public void buyNonPromotionProduct(String name, int amount) {
-        Product nonPromotionProduct = availableProducts.findNonPromotionProduct(name);
-        Product product = new Product.Builder()
-                .name(nonPromotionProduct.getName())
-                .price(nonPromotionProduct.getPrice())
-                .quantity(amount)
-                .promotion(null)
-                .build();
-
-        orderResult.addProduct(product);
-        products.updateProduct(product);
+        if (amount > 0) {
+            Product nonPromotionProduct = availableProducts.findNonPromotionProduct(name);
+            Product product = createPuchaseProduct(nonPromotionProduct, amount);
+            orderResult.addProduct(product);
+            products.updateProduct(product);
+        }
     }
 
     public void buyPromotionProduct(String name, int amount) {
-        Product promotionProduct = availableProducts.findPromotionProduct(name);
-        Product product = new Product.Builder()
-                .name(promotionProduct.getName())
-                .price(promotionProduct.getPrice())
-                .quantity(amount)
-                .promotion(promotionProduct.getPromotion())
-                .build();
+        if (amount > 0) {
+            Product promotionProduct = availableProducts.findPromotionProduct(name);
+            Product product = createPuchaseProduct(promotionProduct, amount);
+            orderResult.addProduct(product);
+            products.updateProduct(product);
+        }
+    }
 
-        orderResult.addProduct(product);
-        products.updateProduct(product);
+    private Product createPuchaseProduct(Product product, int amount) {
+        return new Product.Builder()
+                .name(product.getName())
+                .price(product.getPrice())
+                .quantity(amount)
+                .promotion(product.getPromotion())
+                .build();
     }
 
     public OrderResult getOrderResult() {
