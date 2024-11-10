@@ -1,18 +1,16 @@
-package store.domain;
+package store.domain.product;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
 import java.util.HashSet;
 import java.util.List;
-import java.util.Objects;
 import java.util.Set;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.domain.product.Product;
+import store.domain.promotion.PromotionTestBase;
 import store.domain.product.Product.Builder;
-import store.domain.product.Products;
 import store.domain.promotion.Promotion;
 
 class ProductsTest extends PromotionTestBase {

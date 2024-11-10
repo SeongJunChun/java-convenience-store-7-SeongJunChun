@@ -1,4 +1,4 @@
-package store.domain.dto;
+package store.dto;
 
 public class OrderResultDto {
     private final int totalQuantity;

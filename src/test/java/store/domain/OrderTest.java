@@ -11,9 +11,10 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import store.domain.product.AvailableProducts;
 import store.domain.product.Product;
+import store.domain.promotion.PromotionTestBase;
 
 
-class OrderTest extends PromotionTestBase{
+class OrderTest extends PromotionTestBase {
 
     private AvailableProducts products;
 

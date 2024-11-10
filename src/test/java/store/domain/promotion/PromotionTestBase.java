@@ -1,10 +1,8 @@
-package store.domain;
+package store.domain.promotion;
 
 import java.time.LocalDate;
 import java.util.List;
 import org.junit.jupiter.api.BeforeEach;
-import store.domain.promotion.Promotion;
-import store.domain.promotion.Promotions;
 
 public abstract class PromotionTestBase {
     protected Promotions promotions;

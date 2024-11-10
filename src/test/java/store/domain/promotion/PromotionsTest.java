@@ -1,4 +1,4 @@
-package store.domain;
+package store.domain.promotion;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -9,9 +9,8 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import store.domain.promotion.Promotion;
 
-class PromotionsTest extends PromotionTestBase{
+class PromotionsTest extends PromotionTestBase {
 
     @DisplayName("현재 진행중인 프로모션 리스트를 반환한다")
     @ParameterizedTest

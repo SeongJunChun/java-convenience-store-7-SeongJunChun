@@ -8,10 +8,11 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.domain.dto.ProductSummaryDto;
+import store.dto.ProductSummaryDto;
 import store.domain.product.Product;
+import store.domain.promotion.PromotionTestBase;
 
-class OrderResultTest extends PromotionTestBase{
+class OrderResultTest extends PromotionTestBase {
     OrderResult orderResult;
     @BeforeEach
     void setUp() {

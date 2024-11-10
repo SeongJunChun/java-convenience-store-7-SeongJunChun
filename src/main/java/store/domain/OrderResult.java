@@ -5,8 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
-import store.domain.dto.OrderResultDto;
-import store.domain.dto.ProductSummaryDto;
+import store.dto.OrderResultDto;
+import store.dto.ProductSummaryDto;
 import store.domain.product.Product;
 
 public class OrderResult {

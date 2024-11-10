@@ -1,4 +1,4 @@
-package store.domain;
+package store.domain.promotion;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -7,7 +7,6 @@ import java.time.LocalDateTime;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
-import store.domain.promotion.Promotion;
 
 class PromotionTest {
 
