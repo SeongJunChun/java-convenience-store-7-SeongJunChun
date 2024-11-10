@@ -1,9 +1,7 @@
 package store.controller;
 
-import store.domain.OrderResult;
 import store.domain.product.AvailableProducts;
 import store.domain.product.Product;
-import store.domain.product.Products;
 import store.service.OrderService;
 
 public class PurchaseController {

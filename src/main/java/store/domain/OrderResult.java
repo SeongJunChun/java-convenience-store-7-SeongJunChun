@@ -15,8 +15,8 @@ public class OrderResult {
     private final List<Product> promotionalProducts;
 
     public OrderResult() {
-        nonPromotionalProducts = new ArrayList<Product>();
-        promotionalProducts = new ArrayList<Product>();
+        nonPromotionalProducts = new ArrayList<>();
+        promotionalProducts = new ArrayList<>();
     }
 
     public boolean hasNoPurchases(){

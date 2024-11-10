@@ -2,11 +2,9 @@ package store.controller;
 
 import camp.nextstep.edu.missionutils.DateTimes;
 import java.util.List;
-import java.util.Map;
 import java.util.Set;
 import store.domain.Membership;
 import store.domain.Order;
-import store.domain.OrderResult;
 import store.domain.product.AvailableProducts;
 import store.domain.product.Product;
 import store.domain.product.Products;
@@ -29,7 +27,6 @@ public class StoreController {
     public StoreController(InputController inputController, OutputView outputView) {
         this.inputController = inputController;
         this.outputView = outputView;
-        ;
     }
 
     public void run() {
