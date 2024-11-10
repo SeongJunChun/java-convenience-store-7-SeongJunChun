@@ -21,6 +21,14 @@ public class Promotion {
         return get+buy;
     }
 
+    public int getRequiredPurchaseAmount(){
+        return buy;
+    }
+
+    public int getBonusAmount(){
+        return get;
+    }
+
     public String getName() {
         return name;
     }
