@@ -13,7 +13,10 @@ public enum ErrorMessage {
     STOCK_MUST_BE_NON_NEGATIVE("상품 제고는 음수가 될 수 없습니다"),
     NAME_CANNOT_BE_EMPTY("상품의 이름은 비어있을 수 없습니다."),
     PRICE_MUST_BE_NON_NEGATIVE("상품의 가격은 음수가 될 수 없습니다"),
-    PRODUCT_NOT_FOUND("해당 상품을 찾을 수 없습니다.");
+    PRODUCT_NOT_FOUND("해당 상품을 찾을 수 없습니다."),
+
+    FILE_SAVE_ERROR("파일 저장 중 오류가 발생했습니다."),
+    FILE_LOAD_ERROR("파일 불러오기 중 오류가 발생했습니다.");
 
     private final static String PREFIX = "[ERROR] ";
     private final String message;

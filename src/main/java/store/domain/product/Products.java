@@ -1,5 +1,7 @@
 package store.domain.product;
 
+import static store.message.ErrorMessage.PRODUCT_NOT_FOUND;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -45,7 +47,7 @@ public class Products {
                 .findFirst()
                 .orElse(null);
         if (existingProduct == null) {
-            throw new IllegalStateException();
+            throw new IllegalStateException(PRODUCT_NOT_FOUND.getMessage());
         }
         existingProduct.reduceQuantity(purchasedProduct.getQuantity());
     }

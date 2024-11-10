@@ -1,5 +1,9 @@
 package store.domain;
 
+import static store.message.ErrorMessage.EXCEEDS_STOCK_QUANTITY;
+import static store.message.ErrorMessage.NON_EXISTENT_PRODUCT;
+import static store.message.ErrorMessage.QUANTITY_MUST_BE_ONE_OR_MORE;
+
 import java.util.List;
 import java.util.Map;
 
@@ -27,7 +31,7 @@ public class Order {
                 .toList();
 
         if (!invalidItems.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(QUANTITY_MUST_BE_ONE_OR_MORE.getMessageWithRetry());
         }
     }
 
@@ -38,7 +42,7 @@ public class Order {
                 .toList();
 
         if (!invalidItems.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(EXCEEDS_STOCK_QUANTITY.getMessageWithRetry());
         }
     }
 
@@ -48,7 +52,7 @@ public class Order {
                 .toList();
 
         if (!nonExistingItems.isEmpty()) {
-            throw new IllegalArgumentException();
+            throw new IllegalArgumentException(NON_EXISTENT_PRODUCT.getMessageWithRetry());
         }
     }
 }

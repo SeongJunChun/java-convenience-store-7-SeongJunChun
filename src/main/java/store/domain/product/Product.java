@@ -1,5 +1,8 @@
 package store.domain.product;
 
+import static store.message.ErrorMessage.NAME_CANNOT_BE_EMPTY;
+import static store.message.ErrorMessage.STOCK_MUST_BE_NON_NEGATIVE;
+
 import store.domain.promotion.Promotion;
 
 public class Product {
@@ -96,13 +99,13 @@ public class Product {
 
         private void validatePositiveNumber(int number) {
             if (number < 0) {
-                throw new IllegalArgumentException();
+                throw new IllegalStateException(STOCK_MUST_BE_NON_NEGATIVE.getMessage());
             }
         }
 
         private void validateBlank(String name) {
             if (name.isBlank()) {
-                throw new IllegalArgumentException();
+                throw new IllegalStateException(NAME_CANNOT_BE_EMPTY.getMessage());
             }
         }
 

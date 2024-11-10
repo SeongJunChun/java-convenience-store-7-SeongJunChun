@@ -1,5 +1,8 @@
 package store.util;
 
+import static store.message.ErrorMessage.FILE_LOAD_ERROR;
+import static store.message.ErrorMessage.FILE_SAVE_ERROR;
+
 import java.io.IOException;
 import java.lang.reflect.Field;
 import java.nio.charset.StandardCharsets;
@@ -30,7 +33,7 @@ public class FileHandler<T> {
             Files.write(path, newLines, StandardCharsets.UTF_8,
                     StandardOpenOption.TRUNCATE_EXISTING, StandardOpenOption.CREATE);
         } catch (IOException e) {
-            throw new IllegalStateException();
+            throw new IllegalStateException(FILE_SAVE_ERROR.getMessage());
         }
     }
 
@@ -43,7 +46,7 @@ public class FileHandler<T> {
                     .map(converter::convertToObject)
                     .collect(Collectors.toList());
         } catch (IOException e) {
-            throw new IllegalStateException();
+            throw new IllegalStateException(FILE_LOAD_ERROR.getMessage());
         }
     }
 
