@@ -10,10 +10,10 @@ public class OrderService {
     private final OrderResult orderResult;
     private final AvailableProducts availableProducts;
 
-    public OrderService(Products products, OrderResult orderResult, AvailableProducts availableProducts) {
+    public OrderService(AvailableProducts availableProducts) {
         this.availableProducts = availableProducts;
         this.products = Products.getInstance();
-        this.orderResult = orderResult;
+        this.orderResult = new OrderResult();
     }
 
     public void buyNonPromotionProduct(String name, int amount) {
@@ -40,6 +40,10 @@ public class OrderService {
 
         orderResult.addProduct(product);
         products.updateProduct(product);
+    }
+
+    public OrderResult getOrderResult() {
+        return orderResult;
     }
 
 }
