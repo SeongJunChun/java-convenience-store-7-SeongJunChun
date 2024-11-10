@@ -18,6 +18,7 @@ public class Parser {
 
     private static final String DELIMITER = ",";
     private static final String MAP_DELIMITER = "-";
+    private static final int PROPERTY_COUNT = 2;
 
     public static int StringToInt(String str) {
         validateBlank(str);
@@ -35,11 +36,18 @@ public class Parser {
         validateBlank(str);
         return Arrays.stream(str.split(DELIMITER))
                 .map(Parser::parseItem)
+                .peek(parts -> validatePropertyCount(parts.length))
                 .collect(Collectors.toMap(
                         parts -> validateProductName(parts[0]),
                         parts -> StringToInt(parts[1]),
                         Parser::validateDuplicate
                 ));
+    }
+
+    private static void validatePropertyCount(int count) {
+        if (count != PROPERTY_COUNT) {
+            throw new IllegalArgumentException(INVALID_FORMAT.getMessageWithRetry());
+        }
     }
 
     private static String[] parseItem(String item) {
@@ -51,7 +59,7 @@ public class Parser {
 
     private static String validateProductName(String productName) {
         validateBlank(productName);
-        if(!productName.matches(NAME_REGEX)){
+        if (!productName.matches(NAME_REGEX)) {
             throw new IllegalArgumentException(INVALID_FORMAT.getMessageWithRetry());
         }
         return productName;
