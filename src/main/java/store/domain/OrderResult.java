@@ -29,13 +29,12 @@ public class OrderResult {
     }
 
     public Map<String, Integer> getProductSummary() {
-        Map<String, Integer> productSummary = new HashMap<>();
-
-        Stream.concat(nonPromotionalProducts.stream(), promotionalProducts.stream())
-                .forEach(product ->
-                        productSummary.merge(product.getName(), product.getQuantity(), Integer::sum)
-                );
-        return productSummary;
+        return Stream.concat(nonPromotionalProducts.stream(), promotionalProducts.stream())
+                .collect(Collectors.toMap(
+                        Product::getName,
+                        Product::getQuantity,
+                        Integer::sum
+                ));
     }
 
     public Map<String, Integer> getPromotionSummary() {
@@ -71,10 +70,12 @@ public class OrderResult {
     }
 
     public void addProduct(Product product) {
-        if(product.getPromotion()==null) {
+        if (product.getPromotion() == null) {
             nonPromotionalProducts.add(product);
         }
-        promotionalProducts.add(product);
+        if (product.getPromotion() != null) {
+            promotionalProducts.add(product);
+        }
     }
 
 }
