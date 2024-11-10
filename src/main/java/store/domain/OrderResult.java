@@ -11,8 +11,8 @@ import store.domain.product.Product;
 
 public class OrderResult {
 
-    List<Product> nonPromotionalProducts;
-    List<Product> promotionalProducts;
+    private final List<Product> nonPromotionalProducts;
+    private final List<Product> promotionalProducts;
 
     public OrderResult() {
         nonPromotionalProducts = new ArrayList<Product>();
