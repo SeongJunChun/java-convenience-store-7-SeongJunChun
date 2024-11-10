@@ -39,31 +39,6 @@ public class Product {
         return promotion;
     }
 
-    @Override
-    public String toString() {
-        return "- "+String.join(" ",
-                name,
-                String.valueOf(price),
-                quantityToString(),
-                promotionToString()
-        );
-    }
-
-    private String promotionToString() {
-        if(promotion != null) {
-            return promotion.getName();
-        }
-        return "";
-    }
-
-    private String quantityToString() {
-        if(quantity == 0) {
-            return "재고 없음";
-        }
-        return String.valueOf(quantity)+"개";
-    }
-
-
     public static class Builder {
         private String name;
         private int price;
