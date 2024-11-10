@@ -2,6 +2,7 @@ package store.domain.promotion;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.Objects;
 
 public class Promotion {
     private final String name;
@@ -14,6 +15,10 @@ public class Promotion {
         LocalDate localDate = date.toLocalDate();
         return (localDate.isEqual(startDate) || localDate.isAfter(startDate)) &&
                 (localDate.isEqual(endDate) || localDate.isBefore(endDate));
+    }
+
+    public int getPromotionThreshold(){
+        return get+buy;
     }
 
     public String getName() {
@@ -34,6 +39,18 @@ public class Promotion {
 
     public LocalDate getEndDate() {
         return endDate;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Promotion promotion)) return false;
+        return Objects.equals(name, promotion.name);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name);
     }
 
     public static class Builder {
