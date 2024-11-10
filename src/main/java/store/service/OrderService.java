@@ -25,7 +25,7 @@ public class OrderService {
                 .promotion(null)
                 .build();
 
-        orderResult.addNonPromotionalProduct(product);
+        orderResult.addProduct(product);
         products.updateProduct(product);
     }
 
@@ -38,7 +38,7 @@ public class OrderService {
                 .promotion(promotionProduct.getPromotion())
                 .build();
 
-        orderResult.addPromotionalProduct(product);
+        orderResult.addProduct(product);
         products.updateProduct(product);
     }
 

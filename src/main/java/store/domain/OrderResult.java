@@ -70,11 +70,11 @@ public class OrderResult {
                 .sum();
     }
 
-    public void addNonPromotionalProduct(Product product) {
-        nonPromotionalProducts.add(product);
-    }
-
-    public void addPromotionalProduct(Product product) {
+    public void addProduct(Product product) {
+        if(product.getPromotion()==null) {
+            nonPromotionalProducts.add(product);
+        }
         promotionalProducts.add(product);
     }
+
 }
