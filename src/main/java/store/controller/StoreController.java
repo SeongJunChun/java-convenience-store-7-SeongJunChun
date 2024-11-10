@@ -32,23 +32,45 @@ public class StoreController {
     public void run() {
         Promotions promotions = loadPromotions();
         Products products = loadProducts(promotions);
-        do  {
-            Set<Promotion> allPromotionsByDate = promotions.findAllPromotionsByDate(DateTimes.now());
-            List<Product> currentProducts = products.findAllProductsByPromotion(allPromotionsByDate);
-            outputView.printCurrentProducts(currentProducts);
-            AvailableProducts availableProducts = AvailableProducts.create(currentProducts);
-            Order order = inputController.getOrder(availableProducts);
-            OrderService orderService = new OrderService(availableProducts);
-            PurchaseController purchaseController = new PurchaseController(inputController,orderService);
-            order.getOrders().forEach((product, quantity) ->
-                    purchaseController.purchaseProduct(product, quantity, availableProducts)
-            );
-            if(orderService.getOrderResult().hasNoPurchases()) continue;
-            Membership membership = new Membership(inputController.getMembershipDiscount());
-            ReceiptDto receiptDto = new ReceiptDto(orderService.getOrderResult(),membership);
-            outputView.printReceipt(receiptDto);
+        do {
+            executePurchaseCycle(promotions, products);
         } while (inputController.getPurchaseAnother());
     }
+
+    private void executePurchaseCycle(Promotions promotions, Products products) {
+        List<Product> currentProducts = getCurrentProducts(promotions, products);
+        AvailableProducts availableProducts = AvailableProducts.create(currentProducts);
+
+        OrderService orderService = processOrder(availableProducts);
+        createReceipt(orderService);
+    }
+
+    private List<Product> getCurrentProducts(Promotions promotions, Products products) {
+        Set<Promotion> allPromotionsByDate = promotions.findAllPromotionsByDate(DateTimes.now());
+        List<Product> currentProducts = products.findAllProductsByPromotion(allPromotionsByDate);
+        outputView.printCurrentProducts(currentProducts);
+        return currentProducts;
+    }
+
+    private OrderService processOrder(AvailableProducts availableProducts) {
+        Order order = inputController.getOrder(availableProducts);
+        OrderService orderService = new OrderService(availableProducts);
+        PurchaseController purchaseController = new PurchaseController(inputController, orderService);
+
+        order.getOrders().forEach((product, quantity) ->
+                purchaseController.purchaseProduct(product, quantity, availableProducts)
+        );
+        return orderService;
+    }
+
+    private void createReceipt(OrderService orderService) {
+        if (!orderService.getOrderResult().hasNoPurchases()) {
+            Membership membership = new Membership(inputController.getMembershipDiscount());
+            ReceiptDto receiptDto = new ReceiptDto(orderService.getOrderResult(), membership);
+            outputView.printReceipt(receiptDto);
+        }
+    }
+
 
 
     private Promotions loadPromotions() {
