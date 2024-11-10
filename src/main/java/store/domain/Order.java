@@ -30,7 +30,7 @@ public class Order {
 
     private void validatePositive(Map<String, Integer> orders) {
         List<String> invalidItems = orders.entrySet().stream()
-                .filter(e -> e.getValue() < 0)
+                .filter(e -> e.getValue() <= 0)
                 .map(Map.Entry::getKey)
                 .toList();
 
