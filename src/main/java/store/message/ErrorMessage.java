@@ -2,6 +2,7 @@ package store.message;
 
 public enum ErrorMessage {
 
+    EMPTY_OR_BLANK("입력 값이 비어있습니다."),
     INVALID_FORMAT("올바르지 않은 형식으로 입력했습니다."),
     NON_EXISTENT_PRODUCT("존재하지 않는 상품입니다."),
     EXCEEDS_STOCK_QUANTITY("재고 수량을 초과하여 구매할 수 없습니다."),
@@ -19,6 +20,7 @@ public enum ErrorMessage {
     FILE_LOAD_ERROR("파일 불러오기 중 오류가 발생했습니다.");
 
     private final static String PREFIX = "[ERROR] ";
+    private final static String REQUEST_RETRY = " 다시 입력해 주세요.";
     private final String message;
 
     ErrorMessage(String message) {
@@ -30,6 +32,6 @@ public enum ErrorMessage {
     }
 
     public String getMessageWithRetry() {
-        return message + " " + PLEASE_TRY_AGAIN.getMessage();
+        return message + REQUEST_RETRY;
     }
 }
