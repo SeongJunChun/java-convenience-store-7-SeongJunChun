@@ -41,7 +41,7 @@ public class Product {
 
     @Override
     public String toString() {
-        return String.join(" ",
+        return "- "+String.join(" ",
                 name,
                 String.valueOf(price),
                 quantityToString(),
@@ -58,9 +58,9 @@ public class Product {
 
     private String quantityToString() {
         if(quantity == 0) {
-            return "제고 없음";
+            return "재고 없음";
         }
-        return String.valueOf(quantity);
+        return String.valueOf(quantity)+"개";
     }
 
 
