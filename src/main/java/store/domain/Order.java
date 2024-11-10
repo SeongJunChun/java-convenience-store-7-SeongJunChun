@@ -24,6 +24,10 @@ public class Order {
         return new Order(orders, products);
     }
 
+    public Map<String, Integer> getOrders() {
+        return orders;
+    }
+
     private void validatePositive(Map<String, Integer> orders) {
         List<String> invalidItems = orders.entrySet().stream()
                 .filter(e -> e.getValue() < 0)
