@@ -12,7 +12,7 @@ import store.domain.promotion.Promotion;
 
 class FileHandlerTest {
 
-    private static final String READ_FILE_PATH = "src/test/resources/promotions_test.md";
+    private static final String READ_FILE_PATH = "src/main/resources/promotions.md";
     private static final String WRITE_FILE_PATH = "src/test/resources/writeTest.md";
 
     @DisplayName("파일을 성공적으로 읽어 온다")
