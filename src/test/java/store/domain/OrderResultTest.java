@@ -8,6 +8,7 @@ import java.util.Map;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
+import store.domain.dto.ProductSummaryDto;
 import store.domain.product.Product;
 
 class OrderResultTest extends PromotionTestBase{
@@ -46,11 +47,13 @@ class OrderResultTest extends PromotionTestBase{
     @DisplayName("모든 구매 물품과 수량을 확인한다")
     @Test
     void productSummaryTest(){
-        Map<String, Integer> expectedSummary = new HashMap<>();
-        expectedSummary.put("콜라", 10);
-        expectedSummary.put("오렌지 주스", 3);
-        expectedSummary.put("감자칩", 5);
-        assertThat(orderResult.getProductSummary()).isEqualTo(expectedSummary);
+        List<ProductSummaryDto> expectedSummary = List.of(
+                new ProductSummaryDto("콜라", 10, 10000),
+                new ProductSummaryDto("오렌지 주스", 3, 6000),
+                new ProductSummaryDto("감자칩", 5, 15000)
+        );
+        assertThat(orderResult.getProductSummary())
+                .containsExactlyInAnyOrderElementsOf(expectedSummary);
     }
 
     @DisplayName("모든 증정품의 이름과 수량을 확인한다")
@@ -72,7 +75,13 @@ class OrderResultTest extends PromotionTestBase{
     @DisplayName("할인 적용전 총 금액을 확인한다")
     @Test
     void calculateTotalPriceTest(){
-        assertThat(orderResult.calculateTotalPrice()).isEqualTo(31000);
+        assertThat(orderResult.calculateTotalPriceAndQuantity().getTotalPrice()).isEqualTo(31000);
+    }
+
+    @DisplayName("구매한 상품의 갯수를 확인한다")
+    @Test
+    void calculateTotalQuantityTest(){
+        assertThat(orderResult.calculateTotalPriceAndQuantity().getTotalQuantity()).isEqualTo(18);
     }
 
     @DisplayName("총 프로모션 적용 금액을 확인한다")
