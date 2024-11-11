@@ -14,12 +14,12 @@ public class InputView {
         return readLine(ENTER_PRODUCT_AND_QUANTITY.getMessage());
     }
 
-    public String readPurchaseNonPromotionProducts(String product,int quantity) {
-        return readLine(NON_PROMOTION_NOTICE.format(product,quantity));
+    public String readPurchaseNonPromotionProducts(String product, int quantity) {
+        return readLine(NON_PROMOTION_NOTICE.format(product, quantity));
     }
 
-    public String readAddFreeProducts(String product,int quantity) {
-        return readLine(FREE_ITEM_PROMPT.format(product,quantity));
+    public String readAddFreeProducts(String product, int quantity) {
+        return readLine(FREE_ITEM_PROMPT.format(product, quantity));
     }
 
     public String readMembershipDiscount() {

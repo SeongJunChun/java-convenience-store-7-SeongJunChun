@@ -6,7 +6,7 @@ import store.view.InputView;
 import store.view.OutputView;
 
 public class StoreApplication {
-    public void run(){
+    public void run() {
         InputView inputView = new InputView();
         InputController inputController = new InputController(inputView);
         OutputView outputView = new OutputView();

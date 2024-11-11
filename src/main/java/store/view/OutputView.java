@@ -20,7 +20,7 @@ public class OutputView {
     }
 
     private void printProduct(List<Product> products) {
-        for(Product product : products) {
+        for (Product product : products) {
             System.out.println(SystemMessage.productFormat(product));
         }
     }

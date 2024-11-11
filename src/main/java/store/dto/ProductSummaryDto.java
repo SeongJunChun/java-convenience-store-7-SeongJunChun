@@ -28,8 +28,12 @@ public class ProductSummaryDto {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         ProductSummaryDto that = (ProductSummaryDto) o;
         return quantity == that.quantity &&
                 totalPrice == that.totalPrice &&

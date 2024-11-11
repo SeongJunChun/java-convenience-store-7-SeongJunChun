@@ -19,8 +19,8 @@ public class OrderResult {
         promotionalProducts = new ArrayList<>();
     }
 
-    public boolean hasNoPurchases(){
-        return nonPromotionalProducts.isEmpty()&&promotionalProducts.isEmpty();
+    public boolean hasNoPurchases() {
+        return nonPromotionalProducts.isEmpty() && promotionalProducts.isEmpty();
     }
 
     public OrderResultDto calculateTotalPriceAndQuantity() {

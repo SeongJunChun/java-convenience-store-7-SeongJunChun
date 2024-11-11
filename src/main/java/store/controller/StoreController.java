@@ -72,7 +72,6 @@ public class StoreController {
     }
 
 
-
     private Promotions loadPromotions() {
         FileHandler<Promotion> fileHandler = new FileHandler<>(new PromotionConverter());
         List<Promotion> promotions = fileHandler.loadFromFile(PROMOTION_FILE_PATH);

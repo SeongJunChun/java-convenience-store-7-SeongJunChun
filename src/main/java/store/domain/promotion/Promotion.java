@@ -17,15 +17,15 @@ public class Promotion {
                 (localDate.isEqual(endDate) || localDate.isBefore(endDate));
     }
 
-    public int getPromotionThreshold(){
-        return get+buy;
+    public int getPromotionThreshold() {
+        return get + buy;
     }
 
-    public int getRequiredPurchaseAmount(){
+    public int getRequiredPurchaseAmount() {
         return buy;
     }
 
-    public int getBonusAmount(){
+    public int getBonusAmount() {
         return get;
     }
 
@@ -51,8 +51,12 @@ public class Promotion {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (!(o instanceof Promotion promotion)) return false;
+        if (this == o) {
+            return true;
+        }
+        if (!(o instanceof Promotion promotion)) {
+            return false;
+        }
         return Objects.equals(name, promotion.name);
     }
 

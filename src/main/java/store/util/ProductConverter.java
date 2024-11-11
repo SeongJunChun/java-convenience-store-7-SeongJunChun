@@ -13,7 +13,7 @@ public class ProductConverter implements Converter<Product> {
 
     private final Promotions promotions;
 
-    public ProductConverter(Promotions promotions){
+    public ProductConverter(Promotions promotions) {
         this.promotions = promotions;
     }
 
@@ -38,7 +38,7 @@ public class ProductConverter implements Converter<Product> {
     }
 
     private String getPromotionName(Promotion promotion) {
-        if(promotion == null){
+        if (promotion == null) {
             return null;
         }
         return promotion.getName();

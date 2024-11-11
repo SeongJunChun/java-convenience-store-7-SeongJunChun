@@ -11,7 +11,7 @@ public class Membership {
     }
 
     public int calculateDiscount(int price) {
-        if(isMembership) {
+        if (isMembership) {
             int discountPrice = (int) (price * DISCOUNT_RATE);
             return Math.min(discountPrice, DISCOUNT_MAX);
         }

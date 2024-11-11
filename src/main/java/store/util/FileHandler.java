@@ -62,7 +62,7 @@ public class FileHandler<T> {
     private String getHeaderFromFields(List<T> items) {
         Field[] fields = items.getFirst().getClass().getDeclaredFields();
         return Arrays.stream(fields)
-                .map(field->toSnakeCase(field.getName()))
+                .map(field -> toSnakeCase(field.getName()))
                 .collect(Collectors.joining(DELIMITER));
     }
 

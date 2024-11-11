@@ -43,7 +43,8 @@ public class Products {
 
     public void updateProduct(Product purchasedProduct) {
         Product existingProduct = products.stream()
-                .filter(product -> product.getName().equals(purchasedProduct.getName()) && product.getPromotion() == purchasedProduct.getPromotion())
+                .filter(product -> product.getName().equals(purchasedProduct.getName())
+                        && product.getPromotion() == purchasedProduct.getPromotion())
                 .findFirst()
                 .orElse(null);
         if (existingProduct == null) {

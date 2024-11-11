@@ -22,12 +22,13 @@ public class InputController {
         });
     }
 
-    public boolean getIsPurchaseNonPromotionProducts(String product,int quantity) {
-        return executeWithRetry(() -> Parser.StringToBoolean(inputView.readPurchaseNonPromotionProducts(product,quantity)));
+    public boolean getIsPurchaseNonPromotionProducts(String product, int quantity) {
+        return executeWithRetry(
+                () -> Parser.StringToBoolean(inputView.readPurchaseNonPromotionProducts(product, quantity)));
     }
 
-    public boolean getIsAddFreeProducts(String product,int quantity) {
-        return executeWithRetry(() -> Parser.StringToBoolean(inputView.readAddFreeProducts(product,quantity)));
+    public boolean getIsAddFreeProducts(String product, int quantity) {
+        return executeWithRetry(() -> Parser.StringToBoolean(inputView.readAddFreeProducts(product, quantity)));
     }
 
     public boolean getMembershipDiscount() {
