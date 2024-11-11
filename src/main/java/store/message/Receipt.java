@@ -8,15 +8,15 @@ import store.dto.ReceiptDto;
 public enum Receipt {
 
     HEADER("==============W 편의점================\n"),
-    ITEM_HEADER("상품명                수량      금액\n"),
-    ITEM("%-11s %10d %9s\n"), // 상품명 15칸 왼쪽 정렬, 수량 8칸 오른쪽 정렬, 금액 12칸 오른쪽 정렬
+    ITEM_HEADER("상품명                 수량      금액\n"),
+    ITEM("%s %s %s\n"),
     PROMOTION_HEADER("=============증    정===============\n"),
-    PROMOTION_ITEM("%-15s %8d\n"), // 상품명 15칸 왼쪽 정렬, 수량 8칸 오른쪽 정렬
+    PROMOTION_ITEM("%s %d\n"),
     FOOTER("====================================\n"),
-    TOTAL("총구매액         %8d %10s\n"), // 수량 8칸, 금액 12칸 오른쪽 정렬
-    EVENT_DISCOUNT("행사할인                 %11s\n"), // 할인 금액 12칸 오른쪽 정렬
-    MEMBERSHIP_DISCOUNT("멤버십할인              %12s\n"), // 할인 금액 12칸 오른쪽 정렬
-    FINAL_AMOUNT("내실돈                 %12s\n");
+    TOTAL("총구매액                %s %s\n"),
+    EVENT_DISCOUNT("행사할인                       %s\n"),
+    MEMBERSHIP_DISCOUNT("멤버십할인                      %s\n"),
+    FINAL_AMOUNT("내실돈                         %s\n");
 
     private final String format;
     private static final DecimalFormat PRICE_FORMAT = new DecimalFormat("#,###");
@@ -43,19 +43,20 @@ public enum Receipt {
     }
 
     private static String formatProductLine(ProductSummaryDto product) {
-        return ITEM.format(product.getName(), product.getQuantity(), formatPrice(product.getTotalPrice()));
+        return ITEM.format(rightPadding(21, product.getName()), rightPadding(5, String.valueOf(product.getQuantity())),
+                formatPrice(product.getTotalPrice()));
     }
 
     private static String formatPromotionProducts(ReceiptDto receiptDto) {
         return PROMOTION_HEADER.format() +
                 receiptDto.getPromotionProducts().entrySet().stream()
-                        .map(entry -> PROMOTION_ITEM.format(entry.getKey(), entry.getValue()))
+                        .map(entry -> PROMOTION_ITEM.format(rightPadding(21, entry.getKey()), entry.getValue()))
                         .collect(Collectors.joining());
     }
 
     private static String formatPrices(ReceiptDto receiptDto) {
         return FOOTER.format() +
-                TOTAL.format(receiptDto.getTotalPriceAndQuantity().getTotalQuantity(),
+                TOTAL.format(rightPadding(5, String.valueOf(receiptDto.getTotalPriceAndQuantity().getTotalQuantity())),
                         formatPrice(receiptDto.getTotalPriceAndQuantity().getTotalPrice())) +
                 EVENT_DISCOUNT.format(formatPrice(-receiptDto.getPromotionDiscount())) +
                 MEMBERSHIP_DISCOUNT.format(formatPrice(-receiptDto.getMembershipDiscount())) +
@@ -64,6 +65,21 @@ public enum Receipt {
 
     public static String formatPrice(int price) {
         return PRICE_FORMAT.format(price);
+    }
+
+    private static String rightPadding(int size, String word) {
+        String formatter = String.format("%%%ds", getKorCnt(word) - size);
+        return String.format(formatter, word);
+    }
+
+    private static int getKorCnt(String kor) {
+        int cnt = 0;
+        for (int i = 0; i < kor.length(); i++) {
+            if (kor.charAt(i) >= '가' && kor.charAt(i) <= '힣') {
+                cnt++;
+            }
+        }
+        return cnt;
     }
 
 }
