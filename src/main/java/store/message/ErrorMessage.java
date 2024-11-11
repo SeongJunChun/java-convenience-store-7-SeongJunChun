@@ -8,8 +8,6 @@ public enum ErrorMessage {
     EXCEEDS_STOCK_QUANTITY("재고 수량을 초과하여 구매할 수 없습니다."),
     QUANTITY_MUST_BE_ONE_OR_MORE("한 개 이상의 수량을 입력해야 합니다."),
     DUPLICATE_PRODUCT_NAME("상품의 이름은 중복될 수 없습니다."),
-    INVALID_INPUT("잘못된 입력입니다."),
-    PLEASE_TRY_AGAIN("다시 입력해 주세요."),
 
     STOCK_MUST_BE_NON_NEGATIVE("상품 제고는 음수가 될 수 없습니다"),
     NAME_CANNOT_BE_EMPTY("상품의 이름은 비어있을 수 없습니다."),
